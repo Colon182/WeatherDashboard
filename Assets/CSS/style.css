@@ -1,5 +1,30 @@
+*{
+    font-family: Arial;
+}
+
 .jumbotron{
     text-align: center;
     color: white;
     background-image: linear-gradient(royalblue, darkblue)
+}
+
+label{
+    font-size: xx-large;
+    padding-left: 15px;
+}
+
+button{
+    width: 100%;
+}
+
+h4{
+    font-size: xx-large;
+}
+
+h5{
+    font-size: x-large;
+}
+
+li{
+    list-style: none;
 }
