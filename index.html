@@ -25,25 +25,26 @@
             <form>
                 <div class="form-group">
                     <label for="inputSearch">Search for a City:</label>
-                    <input class="form-control" id="city" aria-describedby="citysearch" placeholder="Enter City">
+                    <input class="form-control" id="cityInput" aria-describedby="citysearch" placeholder="Enter City">
                 </div>
-                <button type="search" class="btn btn-primary">Search</button>
+                <button type="search" class="btn btn-primary" id="searchBtn">Search</button>
             </form>
         </div>
 
         <div class="col-12 col-md-6 col-xl-8">
             <h4>Current Weather</h4>
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
+                <div class="card-body" id="current-container">
+                    
                 </div>
             </div>
         </div>
         <div class="col-12 col-md-6 col-xl-4">
             <div class="card">
                 <div class="card-body">
+                    <h5 class="card-title">Search History</h5>
                     <ul id="search-history">
-                       
+
                     </ul>
                 </div>
             </div>
