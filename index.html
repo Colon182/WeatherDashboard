@@ -8,7 +8,7 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="Assets/CSS/style.css">
     <title>Weather Display</title>
 </head>
 
@@ -16,6 +16,7 @@
     <!-- jumbotron from bootstrap -->
     <div class="jumbotron">
         <h1 class="display-4">Weather Dashboard</h1>
+        <p id="currentDay" class="lead"></p>
     </div>
 
 
@@ -25,7 +26,7 @@
             <form>
                 <div class="form-group">
                     <label for="inputSearch">Search for a City:</label>
-                    <input class="form-control" id="cityInput" aria-describedby="citysearch" placeholder="Enter City">
+                    <input class="form-control" id="cityInput" placeholder="Enter City">
                 </div>
                 <button type="search" class="btn btn-primary" id="searchBtn">Search</button>
             </form>
@@ -62,6 +63,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="Assets/Script/script.js"></script>
 
 </body>

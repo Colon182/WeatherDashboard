@@ -4,44 +4,55 @@ var searchBtnEl = $("#searchBtn");
 var cityInputEl = $("#cityInput").val().trim();
 var searchHistoryEl = $("#searchHistory")
 var forecastEl = $(".forecast-container")
+var timeDisplayEl = $("#currentDay")
+
+
+function displayTime() {
+    var rightNow = moment().format("MMM DD, YYYY")
+    timeDisplayEl.text(rightNow);
+};
+displayTime();
 
 function handleSearch(e) {
-    if (!cityInputEl) {
-        return;
-    } else {
-        e.preventDefault();
+    var cityInputEl = $("#cityInput").val().trim();
+    console.log(cityInputEl);
+    e.preventDefault();
+    if (cityInputEl) {
         grabCity(cityInputEl);
         searchHistory(cityInputEl);
-        cityInputEl.html("");
+        $("#cityInput").text("");
     }
+    console.log(cityInputEl);
 };
 
 function grabCity(city) {
     var weatherApi = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
+    console.log(weatherApi);
     fetch(weatherApi)
         .then(function (res) {
             return res.json();
         }).then(function (data) {
-            forecastGrab(data.lat, data.lon)
+            forecastGrab(data[0].lat, data[0].lon)
+            console.log(data[0].lat, data[0].lon)
         })
 };
 
-function forecastGrab(lat, lon,) {
+function forecastGrab(lat, lon) {
     var forecastApi = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
     fetch(forecastApi)
-    .then(function (res) {
-        return res.json();
-    })
-    .then(function (data) {
-        console.log(data);
-        weatherData(data);
-    })
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            weatherData(data);
+        })
 }
 
-function weatherData() {} 
+function weatherData(data) { }
+
+function searchHistory() { }
 
 
-function searchHistory() {}
 
-
-searchBtnEl.addEventListener("submit", handleSearch);
+searchBtnEl.on("click", handleSearch);
