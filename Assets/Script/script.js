@@ -49,7 +49,18 @@ function forecastGrab(lat, lon) {
         })
 }
 
-function weatherData(data) { }
+function weatherData(data) {
+    if (data.daily.length === 0) {
+        var currentName = $("<h3>")
+        currentName.html(cityInputEl)
+        var temperature = $("<p>")
+        temperature.html("Temp: " + data.daily[0].temp.day + "°F")
+        var humidityEl = $("<p>")
+        humidityEl.html("Humidity: " + data.daily[0].humidity + "%")
+        var windSpeed = $("<p>")
+        windSpeed.html("Wind Speed: " + data.daily[0].wind_speed + "mph")
+    }
+}
 
 function searchHistory() { }
 
