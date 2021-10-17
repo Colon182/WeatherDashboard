@@ -6,6 +6,9 @@ var searchHistoryEl = $("#searchHistory")
 var forecastEl = $(".forecast-container")
 var timeDisplayEl = $("#currentDay")
 var currentName = $("#current-name")
+var rightNow = moment().format("MMM DD, YYYY")
+var divTag1 = $("#d1")
+// var divTag2 = $("#d2")
 
 function displayTime() {
     var rightNow = moment().format("MMM DD, YYYY")
@@ -51,25 +54,26 @@ function forecastGrab(lat, lon) {
 }
 
 function weatherData(data) {
-    // var currentName = $("#current-name")
-    // currentName.html(cityInputEl)
-    var temperature = $("<p>")
-    temperature.html("Temp: " + data.daily[0].temp.day + "°F")
-    var humidityEl = $("<p>")
-    humidityEl.html("Humidity: " + data.daily[0].humidity + "%")
-    var windSpeed = $("<p>")
-    windSpeed.html("Wind Speed: " + data.daily[0].wind_speed + "mph")
-    currentName.append(temperature, humidityEl, windSpeed)
+    var temperature = $("<p>");
+    temperature.html("Temp: " + data.daily[0].temp.day + "°F");
+    var humidityEl = $("<p>");
+    humidityEl.html("Humidity: " + data.daily[0].humidity + "%");
+    var windSpeed = $("<p>");
+    windSpeed.html("Wind Speed: " + data.daily[0].wind_speed + "mph");
+    divTag1.append(temperature, humidityEl, windSpeed);
 
     for (var i = 1; i < 6; i++) {
-        var forecastHeader = $("<h3>")
-        var temperature = $("<p>")
-        temperature.html("Temp: " + data.daily[i].temp.day + "°F")
-        var humidityEl = $("<p>")
-        humidityEl.html("Humidity: " + data.daily[i].humidity + "%")
-        var windSpeed = $("<p>")
-        windSpeed.html("Wind Speed: " + data.daily[i].wind_speed + "mph")
-        currentName.append(temperature, humidityEl, windSpeed)
+        var foreCast = $("#forecast");
+        var forecastHeader = $("<section>");
+        forecastHeader.html( moment(data.daily[i].dt * 1000).format("M/D"));
+        var temperatureCast = $("<p>");
+        temperatureCast.html("Temp: " + data.daily[i].temp.day + "°F");
+        var humidityElCast = $("<p>");
+        humidityElCast.html("Humidity: " + data.daily[i].humidity + "%");
+        var windSpeedCast = $("<p>");
+        windSpeedCast.html("Wind Speed: " + data.daily[i].wind_speed + "mph");
+        foreCast.append(forecastHeader);
+        forecastHeader.append(temperatureCast, humidityElCast, windSpeedCast);
     }
 }
 
