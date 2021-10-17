@@ -5,7 +5,7 @@ var cityInputEl = $("#cityInput").val().trim();
 var searchHistoryEl = $("#searchHistory")
 var forecastEl = $(".forecast-container")
 var timeDisplayEl = $("#currentDay")
-
+var currentName = $("#current-name")
 
 function displayTime() {
     var rightNow = moment().format("MMM DD, YYYY")
@@ -15,6 +15,7 @@ displayTime();
 
 function handleSearch(e) {
     var cityInputEl = $("#cityInput").val().trim();
+    currentName.html(cityInputEl)
     console.log(cityInputEl);
     e.preventDefault();
     if (cityInputEl) {
@@ -50,8 +51,8 @@ function forecastGrab(lat, lon) {
 }
 
 function weatherData(data) {
-    var currentName = $("#current-name")
-    currentName.html(cityInputEl)
+    // var currentName = $("#current-name")
+    // currentName.html(cityInputEl)
     var temperature = $("<p>")
     temperature.html("Temp: " + data.daily[0].temp.day + "°F")
     var humidityEl = $("<p>")
@@ -61,7 +62,14 @@ function weatherData(data) {
     currentName.append(temperature, humidityEl, windSpeed)
 
     for (var i = 1; i < 6; i++) {
-        
+        var forecastHeader = $("<h3>")
+        var temperature = $("<p>")
+        temperature.html("Temp: " + data.daily[i].temp.day + "°F")
+        var humidityEl = $("<p>")
+        humidityEl.html("Humidity: " + data.daily[i].humidity + "%")
+        var windSpeed = $("<p>")
+        windSpeed.html("Wind Speed: " + data.daily[i].wind_speed + "mph")
+        currentName.append(temperature, humidityEl, windSpeed)
     }
 }
 
