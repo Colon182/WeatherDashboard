@@ -77,7 +77,17 @@ function weatherData(data) {
     }
 }
 
-function searchHistory() { }
+function searchHistory(cityInputEl) {
+    var historyBtn = $("<button>");
+    historyBtn.html(cityInputEl);
+    historyBtn.attr("type", "submit");
+    historyBtn.attr("class", "history");
+    historyBtn.attr("city-name");
+    var saved = JSON.parse(localStorage.getItem("searchTerm")) || [];
+    saved.push(cityInputEl);
+    localStorage.setItem("searchTerm", JSON.stringify(saved));
+
+}
 
 
 

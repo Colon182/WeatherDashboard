@@ -31,3 +31,7 @@ h5{
 li{
     list-style: none;
 }
+
+section{
+    padding: 20px;
+}
